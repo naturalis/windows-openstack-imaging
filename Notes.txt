@@ -1,0 +1,51 @@
+﻿C:\Chocolatey\bin;C:\Program Files (x86)\Git\cmd;
+
+qemu-img convert -c -f raw -O qcow2 output-qemu/centos65_64.qcow2
+
+http://download.microsoft.com/download/6/A/E/6AEA92B0-A412-4622-983E-5B305D2EBE56/adk/adksetup.exe
+
+https://github.com/stackforge/murano-deployment/blob/942908ce48357d2066e99ecefdff8fd671ffe918/image-builder/share/scripts/wpi.ps1
+
+Metadata service
+http://169.254.169.254
+
+#Get timezone
+(Get-WmiObject win32_timezone).caption
+
+#Set timezone
+TZUTIL /s "W. Europe Standard Time"
+
+Disable firewall:
+Import-Module NetSecurity -ea Stop ; Get-NetFirewallProfile | Set-NetfirewallProfile -Enabled False
+
+Import-Module NetSecurity
+New-NetFirewallRule -DisplayName "Allow Ping" -Direction Inbound -Action Allow -Protocol icmpv4 -Enabled True
+New-NetFirewallRule -Name Allow_Ping -DisplayName “Allow Ping”  -Description “Packet Internet Groper ICMPv4″ -Protocol ICMPv4 -IcmpType 8 -Enabled True -Profile Any -Action Allow
+
+#Disable UAC, reboot needed
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0 -PropertyType dword
+
+#Enable Remote Desktop Firewall Rules
+Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+
+#Enable Remote Desktop Settings
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+New-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0 -PropertyType dword
+
+#Non-Secured Remote Desktop Session Allowed
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
+New-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0 -PropertyType dword
+bject win32_timezone).caption
+
+#Get current network profile (Public/Private)
+Get-NetConnectionProfile
+
+#Set to Private, first change the InterfaceIndex number
+Set-NetConnectionProfile -InterfaceIndex 3 -NetworkCategory Private
+
+
+Enable-PSRemoting
+
+
+
