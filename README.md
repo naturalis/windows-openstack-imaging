@@ -101,3 +101,9 @@ Add a floating ip address, you can now access the instance through rdp. Use 'Adm
 There are two tools installed by default, Git and Chocolatey. With Chocolatey you can easily install new software from repositories. Check https://chocolatey.org for available packages. For instance, if you would like to install notepad++, you just issue the following command: 
 
     cinst notepadplusplus
+
+### Add volume
+
+To add an extra volume to the instance, create a volume in the webinterface, attach it and give it a name like /dev/vdc. Next, in the instance run the following PowerShell script:
+
+    AddVolume.ps1
