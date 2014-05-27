@@ -11,7 +11,7 @@ Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat
     sudo ./BootWin2012.sh
 
 ### First settings
-When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from conncted virtual cdrom drive. Set up Chocolatey from virtual cdrom. After that, it is easy to install git.
+When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Set up Chocolatey from virtual cdrom. After that, it is easy to install git.
 
     Chocolatey.bat
     cinst git
