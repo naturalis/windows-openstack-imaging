@@ -35,7 +35,7 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
 
     ./Sysprep.ps1
 
-### Convert your the RAW image to a qcow2 image
+### Convert the RAW image to a qcow2 image
     
     qemu-img convert -f raw -O qcow2 Images/win-2012-01.raw Images/windows-2012.qcow2
 
