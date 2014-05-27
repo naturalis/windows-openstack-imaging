@@ -6,18 +6,20 @@ Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM ra
     genisoimage -J -iso-level 3 -o Software.iso Software 
 
 ###  Start Windows on KVM
+
 Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat scsi drive to recognize the harddisk, available from the connected virtual cdrom drive.
 
     sudo ./BootWin2012.sh
 
 ### First settings
+
 When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Set up Chocolatey from virtual cdrom. After that, it is easy to install git.
 
     Chocolatey.bat
     cinst git
 
-
 ### Apply PowerShell scripts
+
 Start PowerShell and navigate to c:\Windows\Temp. Than, pull the git repo from github.
 
     git clone https://github.com/naturalis/windows-openstack-imaging
@@ -36,10 +38,16 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
     ./Sysprep.ps1
 
 ### Convert the RAW image to a qcow2 image
-    
+   
     qemu-img convert -f raw -O qcow2 Images/win-2012-01.raw Images/windows-2012.qcow2
 
 ### Upload the image to glance
+
+Source admin OpenStack RC file:
+
+    source admin-openrc.sh
+
+Upload the image:    
 
     glance image-create \
     --property os_type=windows \
@@ -50,7 +58,12 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
     --file windows-2012.qcow2 \
     --progress
 
+Show available images:
+
+    glance image-list
+
 ### Launch you newly created image in OpenStack
+
 There are two ways to startup a Windows instance on OpenStack, through the webinterface or the command line.
 
 ### Webinterface
@@ -58,7 +71,11 @@ There are two ways to startup a Windows instance on OpenStack, through the webin
 Create an instance based on image 'windows-2012'. Minimum disk size must be set to 160 GB. Select your key. Instance Name will be the hostname of the instance. The 'Admin Pass' option is not supported. 
 
 When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so. 
-An other option is to use the Admin account, that is created during boot. To retrieve this password with the following command: 
+An other option is to use the Admin account, that is created during boot. You can retrieve this password with a nova command. First source your OpenStack RC file:
+
+    source dev-ops-openrc.sh
+
+Next, retreive the password:
 
     nova get-password <instancename> ~/.ssh/id_rsa 
 
