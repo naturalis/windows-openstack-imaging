@@ -70,7 +70,7 @@ Source your OpenStack rc file. Submit the following command:
 
 With --user_data you can supply a startup script.
 
-Add a floating ip address to the instance. You can now create a rdp session. Use 'Admin' as username, password as supplied in the nova boot command.
+Add a floating ip address, you can now access the instance through rdp. Use 'Admin' as username, password as supplied in the nova boot command.
 
 
 ### Install software
