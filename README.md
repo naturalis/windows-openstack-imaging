@@ -1,9 +1,11 @@
 windows-openstack-imaging
 =========================
 
-Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM raw volume. When the image is ready, it needs to be converted to a qcow2 image. Raw image is much faster than a qcow2 image.
+Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM raw volume. When the image is ready, it needs to be converted to a qcow2 image. A RAW image is much faster than a qcow2 image. Download software mentioned in the Readme file in the Software directory and create a iso file.
 
-### How to create a Windows template image on KVM
+    genisoimage -J -iso-level 3 -o Software.iso Software 
+
+###  Start Windows on KVM
 Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat scsi drive to recognize the harddisk, available from the connected virtual cdrom drive.
 
     sudo ./BootWin2012.sh
@@ -22,12 +24,12 @@ Start PowerShell and navigate to c:\Windows\Temp. Than, pull the git repo from g
 
 Apply Powershell scripts in the repository on the Windows instance to customize the image. These settings take care of Windows update, UAC, firewall, time settings, base tools, etc.
 
-    .\WindowsUpdate.ps1
-    .\PowerShellScripts.ps1
+    ./WindowsUpdate.ps1
+    ./PowerShellScripts.ps1
 
 ### Install Cloudbase cloudinit software
 
-    sudo ./InstallCloudbase.ps1
+    ./InstallCloudbase.ps1
 
 ### Run Sysprep
 
