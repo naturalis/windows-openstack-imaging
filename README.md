@@ -104,6 +104,4 @@ There are two tools installed by default, Git and Chocolatey. With Chocolatey yo
 
 ### Add volume
 
-To add an extra volume to the instance, create a volume in the webinterface, attach it and give it a name like /dev/vdc. Next, in the instance run the following PowerShell script:
-
-    AddVolume.ps1
+To add an extra volume to the instance, create a volume in the webinterface, attach it and give it a name like /dev/vdc. Another volume must be named /dev/vdd, and so on. In disk management you initialize and format the new volume.
