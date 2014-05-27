@@ -25,7 +25,7 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
     .\WindowsUpdate.ps1
     .\PowerShellScripts.ps1
 
-### Run cloudbase tool
+### Install Cloudbase cloudinit software
 
     sudo ./InstallCloudbase.ps1
 
