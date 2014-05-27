@@ -1,7 +1,5 @@
 WIN_ISO=Software/SW_DVD5_SA_Win_Ent_8.1_64BIT_Eng_Intl_MLF_X18-96758.ISO
-#WIN_ISO=Software/SW_DVD9_Windows_Svr_Std_and_DataCtr_2012_R2_64Bit_English_-2_Core_MLF_X19-31419.ISO
-IMAGE=Images/win-81-64-copy-01.raw
-#IMAGE=Images/win-2012R2.raw
+IMAGE=Images/windows-81.raw
 SOFTWARE_ISO=Software/Software.iso
 KVM=/usr/libexec/qemu-kvm
 
@@ -10,7 +8,7 @@ if [ ! -f "$KVM" ]; then
 fi
 
 if [ ! -f "$IMAGE" ]; then
-  qemu-img create -f raw $IMAGE 60G
+  qemu-img create -f raw $IMAGE 40G
 fi
 
 $KVM \
