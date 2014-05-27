@@ -31,7 +31,7 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
 
 ### Run Sysprep
 
-   ./Sysprep.ps1
+    ./Sysprep.ps1
 
 ### Convert your the RAW image to a qcow2 image
     
