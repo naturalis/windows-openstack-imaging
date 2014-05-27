@@ -83,7 +83,11 @@ Add a floating ip address, you can now access the instance through rdp.
 
 ### Commandline
 
-Source your OpenStack rc file. Submit the following command: 
+Source your OpenStack RC file:. 
+
+    source dev-ops-openrc.sh
+
+Submit the following command: 
 
     nova boot --meta admin_pass=Passw0rd --user_data welcome.bat --image "windows-2012" --flavor 1RAM-1CPU-160Disk --key_name "mykey" windows-test-01 
 
