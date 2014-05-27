@@ -53,10 +53,8 @@ There are two ways to startup a Windows instance on OpenStack, through the webin
 
 ### Webinterface
 
-Launch Instance
 Create an instance based on image 'windows-2012'. Minimum disk size must be set to 160 GB. Select your key. Instance Name will be the hostname of the instance. The 'Admin Pass' option is not supported. 
 
-Logon
 When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so. 
 An other option is to use the Admin account, that is created during boot. To retrieve this password with the following command: 
 
@@ -66,20 +64,17 @@ Add a floating ip address, you can now access the instance through rdp.
 
 ### Commandline
 
-Launch Instance
 Source your OpenStack rc file. Submit the following command: 
 
     nova boot --meta admin_pass=Passw0rd --user_data welcome.bat --image "windows-2012" --flavor 1RAM-1CPU-160Disk --key_name "mykey" windows-test-01. 
 
 With --user_data you can supply a startup script.
 
-Logon
 Add a floating ip address to the instance. You can now create a rdp session. Use 'Admin' as username, password as supplied in the nova boot command.
 
 
-Install software
+### Install software
+
 There are two tools installed by default, Git and Chocolatey. Chocolatey you can easily install new software from repositories. Check https://chocolatey.org/ for available packages. For instance, if you would like to install notepad++, you just issue the following command: 
 
     cinst notepadplusplus
-
-
