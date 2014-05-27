@@ -1,5 +1,5 @@
 WIN_ISO=Software/SW_DVD9_Windows_Svr_Std_and_DataCtr_2012_R2_64Bit_English_-2_Core_MLF_X19-31419.ISO
-IMAGE=Images/win-2012-01.raw
+IMAGE=Images/windows-2012.raw
 SOFTWARE_ISO=Software/Software.iso
 KVM=/usr/libexec/qemu-kvm
 
