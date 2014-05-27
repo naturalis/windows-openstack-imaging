@@ -48,7 +48,7 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
     --file windows-2012.qcow2 \
     --progress
 
-### Launch you newly created in OpenStack
+### Launch you newly created image in OpenStack
 There are two ways to startup a Windows instance on OpenStack, through the webinterface or the command line.
 
 ### Webinterface
