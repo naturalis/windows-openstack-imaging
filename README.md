@@ -60,7 +60,7 @@ Logon
 When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so. 
 An other option is to use the Admin account, that is created during boot. To retrieve this password with the following command: 
 
-    nova get-password <instancename> ~/.ssh/id_rsa. 
+    nova get-password <instancename> ~/.ssh/id_rsa 
 
 Add a floating ip address, you can now access the instance through rdp.
 
