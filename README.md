@@ -75,6 +75,6 @@ Add a floating ip address to the instance. You can now create a rdp session. Use
 
 ### Install software
 
-There are two tools installed by default, Git and Chocolatey. Chocolatey you can easily install new software from repositories. Check https://chocolatey.org/ for available packages. For instance, if you would like to install notepad++, you just issue the following command: 
+There are two tools installed by default, Git and Chocolatey. With Chocolatey you can easily install new software from repositories. Check https://chocolatey.org for available packages. For instance, if you would like to install notepad++, you just issue the following command: 
 
     cinst notepadplusplus
