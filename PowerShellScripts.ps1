@@ -60,7 +60,6 @@ New-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-
 #Non-Secured Remote Desktop Session Allowed
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
 New-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0 -PropertyType dword
-bject win32_timezone).caption
 
 
 
