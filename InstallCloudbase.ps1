@@ -24,7 +24,7 @@ $Host.UI.RawUI.WindowTitle = "Downloading Cloudbase-Init..."
 
         $Host.UI.RawUI.WindowTitle = "Running SetSetupComplete..."
         & "$ENV:ProgramFiles (x86)\Cloudbase Solutions\Cloudbase-Init\bin\SetSetupComplete.cmd"
-        }
+        
 }
 catch
 {
