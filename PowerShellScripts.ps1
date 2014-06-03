@@ -25,14 +25,14 @@
                 { Return ‘Folder already within $ENV:PATH’ }
 
         # Set the New Path
-            Write-Log "Adding Folder $AddedFolder to Path Variable"
+            Write-Host "Adding Folder $AddedFolder to Path Variable"
             $NewPath=$OldPath+’;’+$AddedFolder
 
             Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
 
         # Show our results back to the world
             $CurrentPath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-            Write-Log "New Path Variable is: $CurrentPath"
+            Write-Host "New Path Variable is: $CurrentPath"
             
         Return $CurrentPath
     }
