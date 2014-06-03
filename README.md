@@ -3,7 +3,7 @@ windows-openstack-imaging
 
 Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM raw volume. When the image is ready, it needs to be converted to a qcow2 image. A RAW image is much faster than a qcow2 image. Download software mentioned in the Readme file in the Software directory and create a iso file.
 
-    genisoimage -J -iso-level 3 -o Software.iso Software 
+    genisoimage -J -iso-level 3 -o Software.iso Software
 
 ###  Start Windows on KVM
 
@@ -38,8 +38,8 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
     ./Sysprep.ps1
 
 ### Convert the RAW image to a qcow2 image
-   
-    qemu-img convert -f raw -O qcow2 Images/win-2012-01.raw Images/windows-2012.qcow2
+
+    qemu-img convert -f raw -O qcow2 Images/windows-2012.raw Images/windows-2012.qcow2
 
 ### Upload the image to glance
 
@@ -47,7 +47,7 @@ Source admin OpenStack RC file:
 
     source admin-openrc.sh
 
-Upload the image:    
+Upload the image:
 
     glance image-create \
     --property os_type=windows \
@@ -68,28 +68,28 @@ There are two ways to startup a Windows instance on OpenStack, through the webin
 
 ### Webinterface
 
-Create an instance based on image 'windows-2012'. Minimum disk size must be set to 160 GB. Select your key. Instance Name will be the hostname of the instance. The 'Admin Pass' option is not supported. 
+Create an instance based on image 'windows-2012'. Minimum disk size must be set to 160 GB. Select your key. Instance Name will be the hostname of the instance. The 'Admin Pass' option is not supported.
 
-When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so. 
+When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so.
 An other option is to use the Admin account, that is created during boot. You can retrieve this password with a nova command. First source your OpenStack RC file:
 
     source dev-ops-openrc.sh
 
 Next, retreive the password:
 
-    nova get-password <instancename> ~/.ssh/id_rsa 
+    nova get-password <instancename> ~/.ssh/id_rsa
 
 Add a floating ip address, you can now access the instance through rdp.
 
 ### Commandline
 
-Source your OpenStack RC file:. 
+Source your OpenStack RC file:.
 
     source dev-ops-openrc.sh
 
-Submit the following command: 
+Submit the following command:
 
-    nova boot --meta admin_pass=Passw0rd --user_data welcome.bat --image "windows-2012" --flavor 1RAM-1CPU-160Disk --key_name "mykey" windows-test-01 
+    nova boot --meta admin_pass=Passw0rd --user_data welcome.bat --image "windows-2012" --flavor 1RAM-1CPU-160Disk --key_name "mykey" windows-test-01
 
 With --user_data you can supply a startup script.
 
@@ -98,7 +98,7 @@ Add a floating ip address, you can now access the instance through rdp. Use 'Adm
 
 ### Install software
 
-There are two tools installed by default, Git and Chocolatey. With Chocolatey you can easily install new software from repositories. Check https://chocolatey.org for available packages. For instance, if you would like to install notepad++, you just issue the following command: 
+There are two tools installed by default, Git and Chocolatey. With Chocolatey you can easily install new software from repositories. Check https://chocolatey.org for available packages. For instance, if you would like to install notepad++, you just issue the following command:
 
     cinst notepadplusplus
 
