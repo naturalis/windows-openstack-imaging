@@ -39,7 +39,7 @@ Apply Powershell scripts in the repository on the Windows instance to customize 
 
 ### Convert the RAW image to a qcow2 image
 
-    qemu-img convert -f raw -O qcow2 Images/windows-2012.raw Images/windows-2012.qcow2
+    qemu-img convert -p -f raw -O qcow2 Images/windows-2012.raw Images/windows-2012.qcow2
 
 ### Upload the image to glance
 
