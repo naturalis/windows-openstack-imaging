@@ -55,7 +55,7 @@ Upload the image:
     --is-public true \
     --disk-format=qcow2 \
     --container-format=bare \
-    --file windows-2012.qcow2 \
+    --file Images\windows-2012.qcow2 \
     --progress
 
 Show available images:
