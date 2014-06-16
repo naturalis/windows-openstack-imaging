@@ -13,7 +13,7 @@ Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat
 
 ### First settings
 
-When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Disable the firewall, and enable Remote Desktop and set the time zone.
+When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Disable the firewall, and enable Remote Desktop.
 
 
 ### Convert the RAW image to a qcow2 image
