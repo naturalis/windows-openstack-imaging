@@ -81,6 +81,12 @@ Next, retreive the password:
 
 Add a floating ip address, you can now access the instance through rdp.
 
+You can add a batch of powershell script:
+
+Windows batch: The file is executed in a cmd.exe shell. The user_data first line must be: rem cmd.
+
+Powershell: Scripting is automatically enabled if not set (RemoteSigned). The user_data first line must be: #ps1
+
 ### Commandline
 
 Source your OpenStack RC file:.
