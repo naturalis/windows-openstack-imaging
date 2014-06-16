@@ -63,13 +63,11 @@ Show available images:
 
     SetPath.ps1
 
-
 - Disable UAC, by running the following script and reboot the instance
 
     DisableUAC.ps1
 
 - Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
-
 - Run Windows update
 
 
@@ -82,7 +80,7 @@ Show available images:
 
 ### Create snapshot
 
-- When the instance is shutdown, create a snapshot in OpenStack, name it windows-2012
+When the instance is shutdown, create a snapshot in OpenStack, name it windows-2012
 
 
 ### Run instance
