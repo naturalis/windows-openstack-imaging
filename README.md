@@ -35,7 +35,7 @@ Upload the image:
     --is-public true \
     --disk-format=qcow2 \
     --container-format=bare \
-    --min-disk=160GB \
+    --min-disk=160 \
     --file Images\windows-2012-base.qcow2 \
     --progress
 
