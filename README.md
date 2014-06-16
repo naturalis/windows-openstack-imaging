@@ -1,9 +1,8 @@
 windows-openstack-imaging
 =========================
 
-Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM raw volume. When the image is ready, it needs to be converted to a qcow2 image. A RAW image is much faster than a qcow2 image. Download software mentioned in the Readme file in the Software directory and create a iso file.
+Tools to create a Windows image for OpenStack on KVM. Setup is based on a KVM RAW volume. When the image is ready, it needs to be converted to a qcow2 image. A RAW image is much faster than a qcow2 image. Download software mentioned in the Readme file in the Software directory.
 
-    genisoimage -J -iso-level 3 -o Software.iso Software
 
 ###  Start Windows on KVM
 
@@ -11,37 +10,18 @@ Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat
 
     sudo ./BootWin2012.sh
 
+
 ### First settings
 
-When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Set up Chocolatey from virtual cdrom. After that, it is easy to install git.
+When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Disable the firewall, and enable Remote Desktop and set the time zone.
 
-    Chocolatey.bat
-    cinst git
-
-### Apply PowerShell scripts
-
-Start PowerShell and navigate to c:\Windows\Temp. Than, pull the git repo from github.
-
-    git clone https://github.com/naturalis/windows-openstack-imaging
-
-Apply Powershell scripts in the repository on the Windows instance to customize the image. These settings take care of Windows update, UAC, firewall, time settings, base tools, etc.
-
-    ./WindowsUpdate.ps1
-    ./PowerShellScripts.ps1
-
-### Install Cloudbase cloudinit software
-
-    ./InstallCloudbase.ps1
-
-### Run Sysprep
-
-    ./Sysprep.ps1
 
 ### Convert the RAW image to a qcow2 image
 
     qemu-img convert -p -f raw -O qcow2 Images/windows-2012.raw Images/windows-2012.qcow2
 
-### Upload the image to glance
+
+### Upload the image to OpenStack using glance
 
 Source admin OpenStack RC file:
 
@@ -51,7 +31,7 @@ Upload the image:
 
     glance image-create \
     --property os_type=windows \
-    --name windows-2012 \
+    --name windows-2012-base \
     --is-public true \
     --disk-format=qcow2 \
     --container-format=bare \
@@ -62,52 +42,49 @@ Show available images:
 
     glance image-list
 
-### Launch you newly created image in OpenStack
 
-There are two ways to startup a Windows instance on OpenStack, through the webinterface or the command line.
+### Create a instance
 
-### Webinterface
-
-Create an instance based on image 'windows-2012'. Minimum disk size must be set to 160 GB. Select your key. Instance Name will be the hostname of the instance. The 'Admin Pass' option is not supported.
-
-When the instance is active, go to the 'Console' tab of the instance settings. Click on full screen. You can now log on as administrator, set the password as you do so.
-An other option is to use the Admin account, that is created during boot. You can retrieve this password with a nova command. First source your OpenStack RC file:
-
-    source dev-ops-openrc.sh
-
-Next, retreive the password:
-
-    nova get-password <instancename> ~/.ssh/id_rsa
-
-Add a floating ip address, you can now access the instance through rdp.
-
-You can add a batch of powershell script:
-
-Windows batch: The file is executed in a cmd.exe shell. The user_data first line must be: rem cmd.
-
-Powershell: Scripting is automatically enabled if not set (RemoteSigned). The user_data first line must be: #ps1
-
-### Commandline
-
-Source your OpenStack RC file:.
-
-    source dev-ops-openrc.sh
-
-Submit the following command:
-
-    nova boot --meta admin_pass=Passw0rd --user_data welcome.bat --image "windows-2012" --flavor 1RAM-1CPU-160Disk --key_name "mykey" windows-test-01
-
-With --user_data you can supply a startup script.
-
-Add a floating ip address, you can now access the instance through rdp. Use 'Admin' as username, password as supplied in the nova boot command.
+- Start a instance, name it 'windows-2012-build-001' and assign a floating IP. Connect to the instance using RDP
 
 
-### Install software
+### Customize the instance
 
-There are two tools installed by default, Git and Chocolatey. With Chocolatey you can easily install new software from repositories. Check https://chocolatey.org for available packages. For instance, if you would like to install notepad++, you just issue the following command:
+- Install Chocolatey, using the batch script found on there website
+- Install Git:
 
-    cinst notepadplusplus
+    cinst git
 
-### Add volume
+- Download git repo:
 
-To add an extra volume to the instance, create a volume in the webinterface, attach it and give it a name like /dev/vdc. Another volume must be named /dev/vdd, and so on. In disk management you initialize and format the new volume.
+    git clone https://github.com/naturalis/windows-openstack-imaging.git C:\Windows\Temp
+
+- Add Chocolatey and Git to Path, so that all users can run it by running the following script
+
+    SetPath.ps1
+
+
+- Disable UAC, by running the following script and reboot the instance
+
+    DisableUAC.ps1
+
+- Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
+
+- Run Windows update
+
+
+### Install Cloudinit
+
+- Disassiate the floating IP address
+- Reboot the instance
+- Run CloudbaseInitSetup_Beta.msi, activate sysprep and shutdown
+
+
+### Create snapshot
+
+- When the instance is shutdown, create a snapshot in OpenStack, name it windows-2012
+
+
+### Run instance
+
+You can now create instances based on this snapshot.
