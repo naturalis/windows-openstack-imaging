@@ -18,7 +18,7 @@ When the image is active, log on with the Administrator, set up a password. Load
 
 ### Convert the RAW image to a qcow2 image
 
-    qemu-img convert -p -f raw -O qcow2 Images/windows-2012.raw Images/windows-2012.qcow2
+    qemu-img convert -p -f raw -O qcow2 Images/windows-2012-base.raw Images/windows-2012-base.qcow2
 
 
 ### Upload the image to OpenStack using glance
