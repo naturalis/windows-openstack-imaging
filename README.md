@@ -68,9 +68,9 @@ Show available images:
 
     DisableUAC.ps1
 
-- Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
 - Run Windows update
 
+- Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
 
 ### Install Cloudinit
 
