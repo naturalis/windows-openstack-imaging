@@ -60,7 +60,7 @@ Show available images:
 
     git clone https://github.com/naturalis/windows-openstack-imaging.git C:\Windows\Temp
 
-- Add Chocolatey and Git to Path, so that all users can run it by running the following script
+- Add Chocolatey and Git to system path, so that all users can run it by running the following script
 
     SetPath.ps1
 
