@@ -1,5 +1,5 @@
 WIN_ISO=Software/SERV2008R2UK.iso
-IMAGE=Images/windows-2008-base.raw
+IMAGE=Images/windows-2008R2-base.raw
 SOFTWARE_ISO=Software/Software.iso
 KVM=/usr/libexec/qemu-kvm
 
