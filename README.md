@@ -46,37 +46,38 @@ Show available images:
 
 ### Create a instance
 
-- Start a instance, name it 'windows-2012-build-001' and assign a floating IP. Connect to the instance using RDP
+Start a instance, name it 'windows-2012-build-001' and assign a floating IP. Connect to the instance using RDP
 
 
 ### Customize the instance
 
-- Install Chocolatey, using the batch script found on there website
-- Install Git:
+Install Chocolatey, using the batch script found on there website
+Install Git and PowerShell:
 
     cinst git
+    cinst powershell
 
-- Download git repo:
+Download git repo:
 
     git clone https://github.com/naturalis/windows-openstack-imaging.git c:\Windows\Temp
 
-- Add Chocolatey and Git to system path, so that all users can run it by running the following script
+Add Chocolatey and Git to system path, so that all users can run it by running the following script
 
     SetPath.ps1
 
-- Disable UAC, by running the following script and reboot the instance
+Disable UAC, by running the following script and reboot the instance
 
     DisableUAC.ps1
 
-- Run Windows update
+Run Windows update
 
-- Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
+Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance
 
 ### Install Cloudinit
 
-- Disassiate the floating IP address
-- Reboot the instance
-- Run CloudbaseInitSetup_Beta.msi, activate sysprep and shutdown
+Disassiate the floating IP address
+Reboot the instance
+Run CloudbaseInitSetup_Beta.msi, activate sysprep and shutdown
 
 
 ### Create snapshot
