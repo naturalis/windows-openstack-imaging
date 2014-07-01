@@ -13,7 +13,7 @@ Install Windows on a KVM instance, to do so start BootWin2012.sh. Add the Redhat
 
 ### First settings
 
-When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Disable the firewall, and enable Remote Desktop. Run Windows update.
+When the image is active, log on with the Administrator, set up a password. Load the Redhat network drivers for the network card. Drivers available from connected virtual cdrom drive. Disable the firewall, and enable Remote Desktop. Run Windows update and install servicepacks.
 
 
 ### Convert the RAW image to a qcow2 image
@@ -68,8 +68,6 @@ Add Chocolatey and Git to system path, so that all users can run it by running t
 Disable UAC, by running the following script and reboot the instance:
 
     DisableUAC.ps1
-
-Run Windows update if there are updates available.
 
 Download CloudbaseInitSetup_Beta.msi from https://www.cloudbase.it/downloads/CloudbaseInitSetup_Beta.msi from your workstation and copy it into C:\Windows\Temp on the instance.
 
