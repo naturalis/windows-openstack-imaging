@@ -81,7 +81,7 @@ Show available images:
 
 ### Create snapshot
 
-When the instance is shutdown, create a snapshot in OpenStack, name it windows-2012
+When the instance is shutdown, create a snapshot in OpenStack, name it 'windows-2012'.
 
 
 ### Run instance
