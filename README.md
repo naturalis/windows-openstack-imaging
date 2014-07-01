@@ -59,7 +59,7 @@ Install Git and PowerShell:
 
 Download git repo:
 
-    git clone https://github.com/naturalis/windows-openstack-imaging.git c:\Windows\Temp
+    git clone https://github.com/naturalis/windows-openstack-imaging.git c:\Windows\Temp\windows-openstack-imaging
 
 Add Chocolatey and Git to system path, so that all users can run it by running the following script:
 
