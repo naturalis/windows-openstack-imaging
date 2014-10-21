@@ -36,7 +36,7 @@ Upload the image:
     --disk-format=qcow2 \
     --container-format=bare \
     --min-disk=160 \
-    --file Images\windows-2012-base.qcow2 \
+    --file Images/windows-2012-base.qcow2 \
     --progress
 
 Show available images:

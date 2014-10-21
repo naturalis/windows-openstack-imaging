@@ -18,7 +18,6 @@ $KVM \
 -drive file=$SOFTWARE_ISO,index=3,media=cdrom \
 -net nic,model=virtio \
 -net user \
--nographic \
 -boot d \
 -vga std \
 -k en-us \
